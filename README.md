@@ -4,9 +4,18 @@ Install
 pip install -e .
 ```
 
+Run Postgres (Docker)
+
+```bash
+cp .env.example .env
+docker compose up -d
+```
+
 Configure env:
 ```bash
-export DB_URI=postgresql://postgres:password@localhost
+set -a
+source .env
+set +a
 ```
 
 Apply migrations
