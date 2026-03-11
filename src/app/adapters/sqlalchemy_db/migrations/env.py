@@ -10,7 +10,9 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 db_uri = os.getenv("DB_URI")
-config.set_main_option('sqlalchemy.url', db_uri)
+if not db_uri:
+    raise ValueError("DB_URI env variable is not set")
+config.set_main_option("sqlalchemy.url", db_uri)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
